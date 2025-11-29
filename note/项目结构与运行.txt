@@ -1,0 +1,49 @@
+E:\MyFile\stockdbx\
+├── core/
+│   ├── sina_fetcher.py          # 你已有的（今日快照）
+│   ├── sina_history_fetcher.py  # 新增（历史日线）
+│   ├── dividend_fetcher.py      # 新增（分红）
+│   └── adjuster.py              # 新增（复权）
+├── lib/
+│   └── stock_utils.py           # 新增（工具函数）
+├── schema/
+│   └── init_db.py               # 你已有的（建表）
+├── config/
+│   └── settings.py              # 你已有的（DATABASE_PATH = r"E:\quant_data\stockdbx.db"）
+├── view_data.py                 # 你已有的（查看数据）
+├── run_init.py                  # 新增（初始化入口）
+└── run_daily.py                 # （可选，每日更新脚本）
+
+E:\MyFile\stockdbx\
+├── core/
+│   ├── sina_fetcher.py          # 你已有的（今日快照）
+│   ├── sina_history_fetcher.py  # 新增（历史日线）
+│   ├── dividend_fetcher.py      # 新增（分红）
+│   └── adjuster.py              # 新增（复权）
+├── lib/
+│   └── stock_utils.py           # 新增（工具函数）
+├── schema/
+│   └── init_db.py               # 你已有的（建表）
+├── config/
+│   └── settings.py              # 你已有的（DATABASE_PATH = r"E:\quant_data\stockdbx.db"）
+├── view_data.py                 # 你已有的（查看数据）
+├── run_init.py                  # 新增（初始化入口）
+└── run_daily.py                 # （可选，每日更新脚本）
+
+
+==============运行==============
+
+# 进入项目目录
+cd E:\MyFile\stockdbx
+
+# 创建数据目录（如果不存在）
+mkdir E:\quant_data -Force
+
+# 首次初始化（预计 20~40 分钟）
+python run_init.py
+
+运行 view_data.py 可看到 daily_raw 和 dividend 表有数据
+
+
+
+

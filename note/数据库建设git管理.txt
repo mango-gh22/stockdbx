@@ -1,0 +1,137 @@
+📌 一、Git 初始化（今日执行）
+1. 在项目根目录初始化仓库
+powershell
+编辑
+cd E:\MyFile\stockdbx
+git init
+2. 创建 .gitignore
+排除临时文件、数据文件、虚拟环境等：
+
+gitignore
+编辑
+# .gitignore
+
+# 虚拟环境
+.venv/
+venv/
+env/
+
+# 数据库文件（重要！不提交真实数据）
+E:\quant_data\**
+quant_data\**
+*.db
+*.sqlite
+
+# 日志与缓存
+logs/
+__pycache__/
+*.log
+*.tmp
+
+# IDE
+.vscode/
+.idea/
+*.pyc
+.DS_Store
+
+# 配置文件（含路径，可能含本地信息）
+config/local_settings.py
+✅ 关键原则：
+
+代码进 Git，数据不进 Git
+配置文件模板可提交（如 settings_template.py），但实际配置忽略
+3. 首次提交（v0.1.0 - 架构奠基版）
+powershell
+编辑
+git add .
+git commit -m "feat: init stockdbx project with core architecture
+
+- 建立分层数据库设计（base/factors/index/derived）
+- 实现日线快照下载（sina_fetcher）
+- 支持股票池驱动（core_3000.csv）
+- 分离分红与行情，禁止合并写入
+- 制定技术纲要 v1.0（见 docs/tech_blueprint.md）"
+🏷️ 二、版本号策略（Semantic Versioning）
+采用 语义化版本（SemVer）：MAJOR.MINOR.PATCH
+
+版本段	含义	触发条件
+MAJOR	不兼容变更	架构重构、数据库表结构破坏性变更
+MINOR	新功能	新增模块（如 factor_fetcher, index_fetcher）
+PATCH	修复/优化	Bug 修复、性能提升、文档完善
+当前版本路线图
+版本	状态	内容
+v0.1.0	✅ 今日发布	架构奠基：日线下载 + 股票池 + 分库设计
+v0.2.0	🚧 下一目标	复权因子下载 + 指数数据接入
+v0.3.0	⏳ 计划中	指标计算引擎 + 合并输出模块
+v1.0.0	🎯 里程碑	首个稳定版：支持完整日线+复权+指标回测输入
+💡 为什么从 v0.1.0 开始？
+
+v0.x 表示“初始开发阶段”，API/结构可能调整
+达到 v1.0.0 时表示基础数据流稳定，可供策略团队依赖
+📁 三、建议目录补充（支持版本管理）
+text
+编辑
+E:\MyFile\stockdbx\
+├── docs/
+│   └── tech_blueprint.md     ← 今日技术纲要（你刚确认的）
+├── config/
+│   ├── settings.py           ← 主配置（提交）
+│   └── settings_template.py  ← 模板（提交，含 DATABASE_PATH 示例）
+├── .gitignore                ← 已创建
+└── README.md                 ← 项目说明（含版本、快速开始）
+示例 README.md 片段：
+markdown
+编辑
+# stockdbx — 量化基础数据中枢
+
+## 📌 当前版本
+**v0.1.0** (2025-11-30) - 架构奠基版
+
+## 🗃️ 数据库分层
+- `base/`: 原始日线、分红（只读）
+- `factors/`: 复权因子
+- `index/`: 指数行情
+- `derived/`: 技术指标
+
+## ▶️ 快速开始
+1. 复制 `config/settings_template.py` → `config/settings.py`
+2. 配置 `DATABASE_PATH = r"E:\quant_data"`
+3. 准备 `E:\quant_data\stock_pool\core_3000.csv`
+4. 运行 `python run_daily.py`
+🔖 四、打标签（Tag）正式版本
+每次发布 MINOR/PATCH 版本时打 Git Tag：
+
+powershell
+编辑
+# 发布 v0.1.0
+git tag -a v0.1.0 -m "Architecture foundation: daily snapshot, pool-driven, separated DB layers"
+
+# 推送标签（若使用远程仓库）
+git push origin v0.1.0
+即使目前仅本地使用，Tag 也能帮助你快速回溯到稳定版本。
+
+✅ 今日 Git 操作总结
+步骤	命令
+1. 初始化仓库	git init
+2. 创建 .gitignore	（内容见上）
+3. 添加所有代码	git add .
+4. 首次提交	git commit -m "feat: init ..."
+5. 打版本标签	git tag -a v0.1.0 -m "..."
+🎯 后续 Git 实践建议
+分支策略：
+main：始终可运行的稳定版
+dev：日常开发（合并 feature 后测通过再入 main）
+提交规范：
+使用 Conventional Commits：
+feat: 新功能
+fix: 修复
+docs: 文档
+chore: 构建/工具变更
+现在，你的 stockdbx 项目已具备：
+
+✅ 清晰的技术架构
+✅ 严格的职责分离
+✅ 可追溯的版本管理
+v0.1.0 是一个值得纪念的起点 —— 它标志着你从“脚本使用者”正式成为“系统构建者”。
+
+如需我生成 tech_blueprint.md 全文或 settings_template.py，请随时告知！

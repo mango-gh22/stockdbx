@@ -1,0 +1,28 @@
+# .gitignore
+
+# 虚拟环境
+.venv/
+venv/
+env/
+
+# 数据库文件（重要！不提交真实数据）
+E:\quant_data\**
+quant_data\**
+*.db
+*.sqlite
+note\**
+
+# 日志与缓存
+logs/
+__pycache__/
+*.log
+*.tmp
+
+# IDE
+.vscode/
+.idea/
+*.pyc
+.DS_Store
+
+# 配置文件（含路径，可能含本地信息）
+config/local_settings.py
