@@ -1,0 +1,40 @@
+百度--wall toolkit--微软商店下载--安装--右击：以管理员身份打开--左侧：网络加速--勾选github--点击右上方：一键加速
+
+github--搜索：dev sidecar--开发者边车--星--下：releases版本--下载：往下找.exe文件，Assets
+--下载，双击安装，打开--安装根证书--去安装--安装证书--本地计算机--下一步--将证书放入下列存储--浏览
+--受信任的根证书颁发机构--确定--下一步--完成：访问github很快
+
+双重身份验证--右上角账户--设置--左侧：password and authentication密码和身份验证--双因素认证two-factor authentication
+--启用双因素认证--扫描二维码--手机--微软商店--下载安装authenticator验证器--点击+号--个人账户--点击“扫描QR码"--然后扫描电脑上的二维码
+--显示账户+给出github动态密码：--填写动态密码--显示下载保存好您的恢复码--保存：网盘+邮箱+桌面+u盘，很重要--
+
+github汉化--推荐2款工具：
+1. 针对菜单、按钮功能翻译：github首页--搜索github汉化插件--github-chinese--下面的使用方法：edge浏览器基于chromium内核--脚本管理器：篡改猴Tampermonkey
+--去商店--获取--插件安装--回到github项目页面继续下找：github中文化插件-点击：github托管--安装
+2. 大面积英文：网页扩展--中中（沉浸式翻译，在用）
+
+github神奇快捷键
+除号斜线/：快速打开github搜索功能
+T：定位到文件搜索栏
+L：快速定位到行号，功能：复制行，permalink复制永久链接，git blame(看出文件的提交历史）...
+？：速查表，快捷键
+英文句号.：
+
+
+github生成新token，token登录
+github--账户--设置--左侧：开发者设置--Tokens（classic)经典--generate new token生成新令牌--功能全选--登录
+
+
+
+方法一：重新克隆到指定位置（推荐）
+1.删除现有的 C:\Users\Administrator\ice 文件夹
+2.打开命令提示符，进入你想要的位置，比如：
+E:
+cd E:\mygithub
+git clone https://github.com/mango-gh22/ice.git
+
+
+
+方法三：修改Git配置--设置默认克隆位置，避免再次出现这种情况
+git config --global user.workdir "E:/mygithub"
+
